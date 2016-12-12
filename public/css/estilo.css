@@ -1,0 +1,297 @@
+body {
+	margin: 0%;
+	padding: 0%;
+	
+	font-family: sans-serif;
+	font-size: 10px;
+	line-height: 20px; 
+	
+
+	
+}
+
+
+
+header {
+	width:100%; /* Establecemos que el header abarque el 100% del documento */
+	overflow:hidden; /* Eliminamos errores de float */
+	background:#252932;
+	height:90px;
+       
+}
+
+
+
+
+.superior
+{
+	width:30%; /* Establecemos que el ancho sera del 90% */
+
+	
+}
+
+
+
+.container1{
+		
+    padding:40px 60px;
+     				
+      position:absolute;
+    /*left y top al posicionarlo en pantalla*/
+    left:30%;
+    top:60%;
+    margin-left:-165px;
+    margin-top: -200px;
+    width: 30%;
+    background-color: green; 
+	
+	box-sizing:border-box;
+	 border-radius:5px; /*probar con 10px se hacen ovalados los inputs*/
+    box-shadow: 2px 2px 3px 1px rgba(0,0,0,.8);
+
+}
+
+.formulario{
+	width:60%;
+	
+}
+
+.iniciar{
+font-size: 35px;
+line-height: 20px; 
+ padding-top: 5px;
+
+
+  
+
+}
+/*
+.form{
+font-size: 20px;
+line-height: 20px; 
+ padding-top: 30px;
+
+}
+
+.emaildiv{
+font-size: 20px;
+line-height: 20px; 
+ padding-top: 20px;
+
+}
+
+.passdiv{
+font-size: 20px;
+line-height: 20px; 
+ padding-top: 30px;
+
+}
+
+/*input{
+    /*border: 1px solid #999; No usar esta l�nea y dejar box-shadow hace efecto de profundidad
+    border-radius:5px; /*probar con 10px se hacen ovalados los inputs
+    box-shadow: 2px 2px 3px 1px rgba(0,0,0,.8);
+    font:bold 20px Arial, Helvetica, sans-serif;
+    height: 24px;
+    line-height: 20px;
+    padding:0 2px;
+    width: 400px;
+    height:40px;
+
+
+}
+
+*/
+/*
+.botonconf {
+ 
+background-color:#F3700C;
+width: 100px;
+position: relative;
+top: 30px;
+border-radius:5px; /*probar con 10px se hacen ovalados los inputs
+box-shadow: 2px 2px 3px 1px rgba(0,0,0,.8);
+ width: 200px;
+height:40px;
+font-size:20px;
+
+
+
+
+}
+
+.registro {
+font-size: 20px;
+line-height: 20px; 
+  padding-top: 30px;
+
+}
+
+
+.texto{
+background-image: url(../img/carita.jpg);
+ color:#2BA10D;
+    width: 100px;
+ position: relative;
+    top: 200px;
+	left:1000px;
+ 
+ width: 200px;
+
+height:200px;
+
+font-size:25px;
+
+
+}
+
+.texto2{
+
+ color:#2BA10D;
+    width: 100px;
+ position: relative;
+    top: 200px;
+	left:1000px;
+ 
+ width: 300px;
+
+height:60px;
+
+font-size:25px;
+
+
+}
+
+
+.texto3{
+
+ color:#3EFA0F;
+    width: 100px;
+ position: relative;
+    top: 140px;
+	left:100px;
+ 
+ width: 300px;
+
+height:20px;
+
+font-size:25px;
+
+
+}
+
+aside{
+	width:30%;
+}
+
+.texto4{
+
+ color:#3EFA0F;
+	
+ position: absolute;
+     left:75%;
+    top:28%;
+ 
+
+height:60px;
+
+font-size:25px;
+
+
+}*/
+.pega{
+	position:fixed;
+	z-index:900;
+	top:0;
+	width:100%;
+	background:#252932;
+	
+	
+	
+}
+
+
+
+
+
+.alinear_boton{
+ float: right; position:absolute; left: 80%;top: 58%;
+
+
+}
+.alinear_botonr{
+ float: right; position:absolute; left: 80%;top: 66%;
+
+
+}
+
+.alinear_success{
+float: right; position:absolute; left:900px ;top:20px ;
+
+}
+
+/*redes sociales*/
+
+.caja-redes {
+    
+	width:50%;
+	height:100px;
+	position:absolute;
+	top:0px;
+	left:900px;
+	padding:15px;
+	
+}
+.caja-redes a {
+
+	font-size: 35px;
+	margin:20px 10px;
+	
+}
+
+.icon-button .icon-linkedin {
+	color: #4393BB;
+	
+}
+.icon-button .icon-pinterest {
+	color: #C92228;
+}
+.icon-button .icon-twitter {
+	color: #4099ff;
+}
+.icon-button .icon-facebook {
+	color: #3B5998;
+}
+.icon-button .icon-google-plus {
+	color: #db5a3c;
+}
+.icon-button:hover .icon-linkedin, .icon-button:hover .icon-pinterest, .icon-button:hover .icon-twitter, .icon-button:hover .icon-facebook, .icon-button:hover .icon-google-plus {
+	color: white;
+}
+
+footer {
+
+    position: relative;
+    
+/* Altura total del footer en px con valor negativo */
+
+   
+ /* Altura del footer en px. Se han restado los 5px del margen
+    
+   superior mas los 5px del margen inferior
+    */
+   
+ height: 400px;
+
+
+   
+ background: #286af0;
+
+   
+ color: #fff;
+top: 100px;
+left:0px;
+
+
+}
+

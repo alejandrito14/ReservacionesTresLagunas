@@ -1,0 +1,80 @@
+body{
+  margin: 0;
+  padding: 0;
+  
+  font-family: sans-serif;
+  font-size: 20px;
+  line-height: 20px; 
+  background-image: url(../img/miimagen.jpg);
+ }
+
+
+.cont
+
+{
+		
+    padding:40px 60px;
+     				
+      position:absolute;
+    /*left y top al posicionarlo en pantalla*/
+    left:45%;
+    top:50%;
+    margin-left:-150px;
+    margin-top: -200px;
+    width: 30%;
+    background-color:#75C40F; 
+	
+	box-sizing:border-box;
+	 border-radius:15px; /*probar con 10px se hacen ovalados los inputs*/
+    box-shadow: 2px 2px 3px 1px rgba(0,0,0,.8);
+
+}
+
+.formulario{
+	width:60%;
+	
+}
+.form{
+font-size: 20px;
+line-height: 20px; 
+ padding-top: 30px;
+
+}
+
+.emaildiv{
+font-size: 20px;
+line-height: 20px; 
+ padding-top: 20px;
+
+}
+.passdiv{
+font-size: 20px;
+line-height: 20px; 
+ padding-top: 30px;
+
+}
+
+.registro {
+font-size: 20px;
+line-height: 20px; 
+  padding-top: 30px;
+
+}
+.botonconf {
+ 
+background-color:#F3700C;
+width: 100px;
+position: relative;
+top: 30px;
+border-radius:20px; /*probar con 10px se hacen ovalados los inputs*/
+box-shadow: 2px 2px 3px 1px rgba(0,0,0,.8);
+ width: 200px;
+height:40px;
+font-size:20px;
+}
+.passdiv2{
+font-size: 20px;
+line-height: 50px; 
+ padding-top: 30px;
+
+}
