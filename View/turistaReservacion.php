@@ -1,5 +1,8 @@
+<?php
+include 'session_star.php';
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- Meta, title, CSS, favicons, etc. -->
@@ -12,41 +15,28 @@
         <!-- CSS -->
         <link rel="stylesheet" href="../Resource/css/style_1.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="../Resource/css/social-icons.css" type="text/css" media="screen" />
-        <!--[if IE 8]>
-            <link rel="stylesheet" type="text/css" media="screen" href="css/ie8-hacks.css" />
-        <![endif]-->
-        <!-- ENDS CSS -->   
-
-        <!-- GOOGLE FONTS 
-        <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>-->
-
-        <!-- JS -->
-        <script type="text/javascript" src="../Resource/js/jquery-1.5.1.min.js"></script>
+        <link rel="stylesheet" href="../Resource/css/errores.css" type="text/css" media="screen"/>
+      
         <script type="text/javascript" src="../Resource/js/jquery-ui-1.8.13.custom.min.js"></script>
         <script type="text/javascript" src="../Resource/js/easing.js"></script>
         <script type="text/javascript" src="../Resource/js/jquery.scrollTo-1.4.2-min.js"></script>
         <script type="text/javascript" src="../Resource/js/jquery.cycle.all.js"></script>
         <script type="text/javascript" src="../Resource/js/menu_pegajoso.js"></script>
-        <script type="text/javascript" src="../Resource/js/custom1.js"></script>
+<!--        <script type="text/javascript" src="../Resource/js/custom1.js"></script>-->
 
+         <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+        crossorigin="anonymous"></script>
+<!--        <script src="../Resource/js/jquery-functions.js"></script>
+        <script src="../Resource/js/reservacion.js"></script> -->
         <!-- Isotope -->
-        <script src="../Resource/js/jquery.isotope.min.js"></script>
+        <script src="../Resource/js-webshim/minified/polyfiller.js"></script>
+        
+<!--        <script src="../Resource/js/jquery.isotope.min.js"></script>-->
         <script src="../Resource/js/jquery.min.js"></script>
+       <script src="../Resource/js/turistasdatos.js" type="text/javascript"></script>
 
 
-        <!--[if IE]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-        <!--[if IE 6]>
-            <script type="text/javascript" src="js/DD_belatedPNG.js"></script>
-            <script>
-                /* EXAMPLE */
-                //DD_belatedPNG.fix('*');
-            </script>
-        <![endif]-->
-        <!-- ENDS JS -->
-
+    
 
         <!-- Nivo slider -->
         <link rel="stylesheet" href="../Resource/css/nivo-slider.css" type="text/css" media="screen" />
@@ -74,7 +64,7 @@
         <!-- poshytip -->
         <link rel="stylesheet" href="../Resource/js/poshytip-1.0/src/tip-twitter/tip-twitter.css" type="text/css" />
         <link rel="stylesheet" href="../Resource/js/poshytip-1.0/src/tip-yellowsimple/tip-yellowsimple.css" type="text/css" />
-        <script type="text/javascript" src="../Resource/js/poshytip-1.0/src/jquery.poshytip.min.js"></script>
+<!--        <script type="text/javascript" src="../Resource/js/poshytip-1.0/src/jquery.poshytip.min.js"></script>-->
         <!-- ENDS poshytip -->
 
         <!-- Tweet -->
@@ -84,9 +74,8 @@
 
         <!-- Fancybox -->
         <link rel="stylesheet" href="../Resource/js/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
-        <script type="text/javascript" src="../Resource/js/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<!--        <script type="text/javascript" src="../Resource/js/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.pack.js"></script>-->
         <!-- ENDS Fancybox -->
-
 
 
 
@@ -110,6 +99,7 @@
     </head>
 
     <body class="home">
+            <div id="turistas"> <?php echo $_SESSION['idusuario']; ?>  </div>
 
         <!-- Menu -->
         <div id="menu">
@@ -163,12 +153,12 @@
                     <!-- user -->
                     <ul id="nav2" class="sf-menu ">
 
-                        <li><a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><img src="../Resource/img/3.jpg" alt="">Turista<span class="subheader">Alejandro Hernández Guzmán</span></a>
+                            <li><a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><img src="../Resource/img/3.jpg" alt="">Turista<span class="subheader"><div id="datos"></div></span></a>
 
                             <ul>
 
                                 <li><a href=""><span>mensages</span></a></li>
-                                <li><a href=""><span>cerrar sesion</span></a></li>
+                                <li><a href="cerrar.php"><span>cerrar sesion</span></a></li>
 
                             </ul>
                         </li>
@@ -193,7 +183,7 @@
         <div id="x_content">
 
 
-            <form id="formingreso" name="formingreso" class="form-group" method="POST">
+            <form id="formreservacion" name="formreservacion" class="form-group" method="POST">
 
 
                 <div id="reservacion">
@@ -201,17 +191,20 @@
                         <div class="">
                             <section class="login_content"> 
                                 <h1>Reservacion </h1>
+                                <input id="txtturista" name="txtturista" type="hidden" value="<?php echo $_SESSION['idusuario']; ?>"  class="form-control">
+
                                 <div class="form-group">
                                     <label for="fecha_na" class="control-label">Fecha de Entrada</label>
-                                    <input id="fecha_na" type="date"   class="form-control">
+                                    <input id="txtfechaentrada" name="txtfechaentrada" type="date"  placeholder="YYYY-MM-DD" data-date-split-input="true" class="form-control">
+                                      <div id="mensaje1" class="errores"> Ingresa la fecha de entrada</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="fecha_na" class="control-label">Fecha de salida</label>
-                                    <input id="fecha_na" type="date" class="form-control">
+                                    <input id="txtfechasalida" name="txtfechasalida" type="date" placeholder="YYYY-MM-DD" data-date-split-input="true" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="nombre" class="control-label">Cantidad de personas</label>
-                                    <input id="cantidad" type="text" class="form-control">
+                                    <input id="cantidad" name="txtcantidadpersonas" type="text" class="form-control">
                                 </div>    
 
                                 <div class="col-md-6">
@@ -225,20 +218,15 @@
                 </div>
 
 
-
-            </form>
-
-
-
-
-            <form action="action">
+            
+           
                 <div id="seleccionar">
                     </br>
                     </br>
                     </br>
 
 
-
+                    <center><div id="content"></div></center>
 
                     <div class="x_title">
                         <center>  <h2>Catálogo de cabañas</h2></center>
@@ -253,7 +241,7 @@
                             <div id="cabanias"> 
 
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-md-10">
                                 <button id="btnsiguiente"  class="btn btn-success"  type="button"   >Siguiente</button>                
                             </div>   
                         </div>
@@ -274,7 +262,7 @@
                                 </div>
                                 <div class="modal-body">
 
-                                    <form class="form-group" id="formMostrar" name="formEditar" >
+                                    
 
                                         <label class="control-label ">Nombre: </label>
                                         <input class="form-control " id="nombrec" readonly/>
@@ -294,7 +282,7 @@
                                         </div>
 
 
-                                    </form>
+                                  
                                 </div>
                             </div>
                         </div>
@@ -302,6 +290,37 @@
 
 
                 </div>  
+                
+                <div id="vacio">
+                    
+                    <div class="login_wrapper">
+                        <section class="login_content"> 
+                    <center><div id="content2">
+                            
+                        </div></center>
+
+                    <div class="x_title">
+                        <center>                         
+                            <a href="turistaReservacion.php" class="btn btn-info" role="button">Intente de nuevo</a>
+                        </center>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+               
+                        <div class="row ">
+
+
+
+                            </div>
+                          
+                        </div>
+                        </section>
+                    </div>
+
+                    </div>
+                    
+             
 
 
                 <div id="siguiente">
@@ -411,10 +430,8 @@
 
 
 
-
             </form>
-
-        </div>
+    </div>
 
         <!-- FOOTER -->
         <div id="footer">
@@ -466,14 +483,25 @@
             <!-- ENDS wrapper-bottom -->
         </div>
         <!-- ENDS Bottom -->
+<script type="text/javascript">
+	$(document).ready(function(){
 
+
+webshim.setOptions('forms-ext', {
+    //replaceUI: 'auto',
+    types: 'date'
+});
+webshim.polyfill('forms forms-ext');
+	});
+
+</script>
+        <script src="../Resource/js/actividades.js"></script>
 
 
         <script src="../Resource/js/jquery-functions.js"></script>
         <script src="../Resource/js/reservacion.js"></script> 
 
-        <script src="../Resource/js/cabanias.js"></script>
-        <script src="../Resource/js/actividades.js"></script>
+
         <script src="../Resource/js/paquetes.js"></script>
 
     </body>

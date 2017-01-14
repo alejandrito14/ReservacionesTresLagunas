@@ -1,3 +1,6 @@
+<?php
+include 'session_star.php';
+?>
 <!DOCTYPE  html>
 <html>
     <head>
@@ -148,7 +151,7 @@
                             <ul>
 
                                 <li><a href=""><span>mensages</span></a></li>
-                                <li><a href=""><span>cerrar sesion</span></a></li>
+                                <li><a href="cerrar.php"><span>cerrar sesion</span></a></li>
 
                             </ul>
                         </li>

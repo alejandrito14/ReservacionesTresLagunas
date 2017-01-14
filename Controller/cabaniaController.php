@@ -85,6 +85,31 @@ $app->get("/cabanias", function () use ($app, $result) {
     echo json_encode($vdataResponse);
 });
 
+
+$app->get("/cabanias/{fechaentrada}/{fechasalida}/{cantidadP}", function ($vresponse) use ($app, $result) {
+
+    $fechaentrada=$vresponse->getAttribute('fechaentrada');
+    $fechasalida=$vresponse->getAttribute('fechasalida');
+    $cantidadP=$vresponse->getAttribute('cantidadP');
+    
+    $vdataResponse = array();
+    try {
+        $obj = new clspBLCabania();
+        $coleccion = new clscFLCabania();
+        $result = $obj->ObtenerCabaniasDisponibles($coleccion,$fechaentrada,$fechasalida,$cantidadP);
+        if ($result == 1) {
+
+            $vdataResponse["cabanias"] = $coleccion;
+        }
+    } catch (Exception $exception) {
+
+        $vdataResponse["cabania"] = -100;
+    }
+
+    echo json_encode($vdataResponse);
+});
+
+
 $app->get("/cabanias/{nombre}", function ($vresponse) use ($app, $result) {
 
      $nombre = $vresponse->getAttribute('nombre');

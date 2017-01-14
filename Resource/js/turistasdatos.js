@@ -1,6 +1,8 @@
 var url = '../Controller/turistaController.php';
 
 $(document).ready(function () {
+    
+    
   
 $("#turistas").hide();
 
@@ -28,6 +30,7 @@ function datos(turista){
                       turistas.apellidoPaterno +" "+
                   turistas.apellidoMaterno + "</p>";
 //                 
+          
             $(turistas).appendTo("#datos");
         });
     });
@@ -35,3 +38,4 @@ function datos(turista){
     
     
 }
+

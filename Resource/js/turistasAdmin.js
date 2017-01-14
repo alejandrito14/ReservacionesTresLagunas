@@ -42,7 +42,7 @@ function cargarTabla() {
 
 
 function mostrar(datos) {
-    alert(datos);
+  //  alert(datos);
 
     var d = datos.split("*");
     $("#turista").val(d[0]);
@@ -91,7 +91,7 @@ function eliminar(id) {
     if (pregunta == true) {
         $.ajax({
             type: 'DELETE',
-            url: url + "/cabanias/" + id,
+            url: url + "/turistas/" + id,
             success: function (vresponse) {
                 alert(' deleted successfully');
 

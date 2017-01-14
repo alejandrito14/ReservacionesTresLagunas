@@ -1,10 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  * Description of clspReservacion
@@ -18,9 +13,12 @@ class clspFLReservacion {
     public $fechaSalida;
     public $numeroDeActividades;
     public $cantidadPersonas;
-    public $estado;
     public $comprobantePago;
-    
+    public $idusuario;
+    public $idestadoReservacion;
+//    public $idcabania;
+//    public $idpaquete;
+//    public $idactividad;
     
       public function __construct() {
         $this->idreservacion=0;
@@ -28,8 +26,12 @@ class clspFLReservacion {
         $this->fechaSalida=0;
         $this->numeroDeActividades=0;
         $this->cantidadPersonas=0;
-        $this->estado=0;
         $this->comprobantePago=0;
+        $this->idusuario=0;
+        $this->idestadoReservacion=0;
+        $this->idcabania=0;
+        $this->idpaquete=0;
+        $this->idactividad=0;
          
      }
 
@@ -40,8 +42,12 @@ class clspFLReservacion {
       unset($fechaSalida);
       unset($numeroDeActividades);
       unset($cantidadPersonas);
-      unset($estado);
       unset($comprobantePago);
+      unset($idusuario);
+      unset($idestadoReservacion);
+      unset($idcabania);
+      unset($idpaquete);
+      unset($idactividad);
          
      }
      

@@ -137,6 +137,22 @@ class clspBLTurista {
         
          $vmySql->CerrarConexion();
     }
+    
+      public static function eliminar_turista($id) {
+        $vmysql = new Mysql();
+        $vmysql->AbrirConexion();
+
+        $result = clspDLTurista::eliminarturista($vmysql, $id);
+
+
+        return $result;
+
+        $mysql->CerrarConexion();
+    }
+    
+    
+    
+    
 
 }
 

@@ -184,6 +184,28 @@ class clspDLTurista {
             throw new Exception($vexception->getMessage(), $vexception->getCode());
         }
     }
+    
+        public static function eliminarturista($vmysql, $id) {
+        try {
+            $consulta = $vmysql->consulta("DELETE FROM c_usuario WHERE id_usuario=\"$id\" ");
+
+            if ($consulta) {
+
+                if ($vmysql->ObtenerNumeroFilasAfectadas() != 1) {
+                    return 0;
+                }
+            }
+            unset($consulta, $vmysql);
+
+            return 1;
+        } catch (Exception $vexcepcion) {
+
+            throw new Exception($vexcepcion->getMessage(), $vexcepcion->getCode());
+        }
+    }
+    
+    
+    
 
 }
 ?>

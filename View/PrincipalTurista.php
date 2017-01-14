@@ -1,8 +1,7 @@
 
-<?php 
-session_start();
-  if (isset($_SESSION['idusuario']) ) 
-  {?>
+<?php
+include 'session_star.php';
+?>
     <!DOCTYPE  html>
     <html>
         <head>
@@ -159,7 +158,7 @@ session_start();
                                 <ul>
 
                                     <li><a href=""><span>mensages</span></a></li>
-                                    <li><a href=""><span>cerrar sesion</span></a></li>
+                                    <li><a href="cerrar.php"><span>cerrar sesion</span></a></li>
 
                                 </ul>
                             </li>
@@ -306,12 +305,5 @@ session_start();
  
 
 
-<?php
 
-  }
-  else
-  {
-    header("location:login-turista.php");
-  }
- ?>
 

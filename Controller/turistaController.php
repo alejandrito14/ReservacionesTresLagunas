@@ -153,7 +153,7 @@ $app->get("/login/{email}/{contrasena}", function ($vrequest) {
 
         $vflturista->correo = trim($vrequest->getAttribute('email'));
         $vstatus = clspBLTurista::verificarturista($vflturista, trim($vrequest->getAttribute("contrasena")));
-
+            
         if ($vstatus == 1) {
 
             clspBLTurista::Obtenerdatosturista($vflturista);
@@ -182,6 +182,28 @@ $app->get("/login/{email}/{contrasena}", function ($vrequest) {
 
 
 
+
+$app->delete("/turistas/{idturista}", function ($vresponse) {
+
+    $id = $vresponse->getAttribute('idturista');
+
+
+    $vdataResponse = array();
+    try {
+        $obj = new clspBLTurista();
+        $vstatus = $obj->eliminar_turista($id);
+        
+        
+        if ($vstatus = 1) {
+
+              $vdataResponse["messageNumber"] =$vstatus;
+        }
+    } catch (Exception $exception) {
+        $vdataResponse["cabania"] = -100;
+    }
+
+    echo json_encode($vdataResponse);
+});
 
 
 $app->run();

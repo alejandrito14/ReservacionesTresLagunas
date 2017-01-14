@@ -27,10 +27,6 @@ class clspDLCabania {
                 $cabania->tarifa = $resultados['cmptarifa'];
                 $cabania->descripcion = $resultados['cmpdescripcion'];
                 $cabania->cantidadPersonas=$resultados['cmpcantidadPersonas'];
-
-
-
-
                 $coleccion->cabanias [] = $cabania;
                 // echo json_encode($coleccion);
             }
@@ -39,6 +35,31 @@ class clspDLCabania {
 
         return 0;
     }
+    public static function ObtenerCabaniasDisponibles($vmySql,$coleccion,$fechaentrada,$fechasalida,$cantidadP){
+       
+        $consulta = $vmySql->consulta("SELECT * FROM c_cabania CAB WHERE CAB.id_cabania NOT IN (SELECT c_asignacioncabania.id_cabania FROM p_reservacion INNER JOIN c_asignacioncabania ON p_reservacion.id_reservacion=c_asignacioncabania.id_reservacion WHERE p_reservacion.cmpfechaEntrada=\"$fechaentrada\" AND p_reservacion.cmpfechaSalida=\"$fechasalida\") And CAB.cmpcantidadPersonas=$cantidadP");
+
+        if ($vmySql->num_rows($consulta) > 0) {
+            while ($resultados = $vmySql->fetch_array($consulta)) {
+                $cabania = new clspFLCabania();
+
+                $cabania->idcabania = $resultados['id_cabania'];
+                $cabania->nombre = $resultados['cmpnombre'];
+                $cabania->tarifa = $resultados['cmptarifa'];
+                $cabania->descripcion = $resultados['cmpdescripcion'];
+                $cabania->cantidadPersonas=$resultados['cmpcantidadPersonas'];
+                $coleccion->cabanias [] = $cabania;
+                // echo json_encode($coleccion);
+            }
+            return 1;
+        }
+
+        return 0; 
+        
+    }
+    
+    
+    
     
     public static function listarCabaniaporid($mysql, $coleccion,$nombre){
         

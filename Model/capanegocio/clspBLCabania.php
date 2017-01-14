@@ -30,6 +30,16 @@ class clspBLCabania {
         $mysql->CerrarConexion();
     }
     
+    public static function ObtenerCabaniasDisponibles($coleccion,$fechaentrada,$fechasalida,$cantidadP){
+          $vmySql = new Mysql();
+        $vmySql->AbrirConexion();
+        
+        $result=  clspDLCabania::ObtenerCabaniasDisponibles($vmySql,$coleccion,$fechaentrada,$fechasalida,$cantidadP);
+         return $result;
+
+        $vmySql->CerrarConexion();
+    }
+    
     public static function listar_cabaniaporid($coleccion,$nombre){
         
         $mysql = new Mysql();

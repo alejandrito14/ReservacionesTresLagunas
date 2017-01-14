@@ -24,7 +24,7 @@ $(document).ready(function () {
                     " <p>Costo: $ " + actividades.tarifa + "</p>" +
                     " <p> Descripción: " +actividades.detalle + "</p>" +
                     "<p>" +
-                    " <input type='checkbox' id='" + actividades.idActividad + "' />" +
+                    " <input name='actividades[]' type='checkbox'   value='" + actividades.idActividad + "' />" +
                     " <label for='" + actividades.idActividad + "'>" + actividades.nombreActividad + "  </label>" +
                     " </p>" +
 
