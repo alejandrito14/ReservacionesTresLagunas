@@ -134,7 +134,7 @@ include 'session_star.php';
                             <li><a href="">Reservaciones<span class="subheader">Reserva aqui</span></a>
                                 <ul>
                                     <li><a href="turistaReservacion.php"><span> Reserva aqui</span></a></li>
-                                    <li><a href=""><span> Tus reservaciones </span></a></li>
+                                    <li><a href="misReservaciones.php"><span> Tus reservaciones </span></a></li>
 
                                 </ul>
                             </li>

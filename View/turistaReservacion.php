@@ -1,4 +1,4 @@
-<?php
+<?php 
 include 'session_star.php';
 ?>
 <!DOCTYPE html>
@@ -35,6 +35,7 @@ include 'session_star.php';
         <script src="../Resource/js/jquery.min.js"></script>
        <script src="../Resource/js/turistasdatos.js" type="text/javascript"></script>
 
+     
 
     
 
@@ -136,7 +137,7 @@ include 'session_star.php';
                         <li><a href="turistaReservacion.php">Reservaciones<span class="subheader">Reserva aqui</span></a>
                             <ul>
                                 <li><a href=""><span> Reserva aqui</span></a></li>
-                                <li><a href=""><span> Tus reservaciones </span></a></li>
+                                <li><a href="misReservaciones.php"><span> Tus reservaciones </span></a></li>
 
                             </ul>
                         </li>
@@ -495,12 +496,13 @@ webshim.polyfill('forms forms-ext');
 	});
 
 </script>
+        <script src="../Resource/js/reservacion.js"></script> 
+        <script src="../Resource/js/jquery-functions.js"></script>
+       
         <script src="../Resource/js/actividades.js"></script>
 
 
-        <script src="../Resource/js/jquery-functions.js"></script>
-        <script src="../Resource/js/reservacion.js"></script> 
-
+      
 
         <script src="../Resource/js/paquetes.js"></script>
 

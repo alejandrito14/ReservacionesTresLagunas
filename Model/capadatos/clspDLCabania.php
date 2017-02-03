@@ -2,7 +2,8 @@
 
 <?php
 
-include_once '../Model/capafisica/clspFLCabania.php';
+//include_once '../Model/capafisica/clspFLCabania.php';
+require_once (dirname(dirname(__FILE__)) . '../capafisica/clspFLCabania.php');
 
 class clspDLCabania {
 
@@ -157,6 +158,35 @@ class clspDLCabania {
             throw new Exception($vexcepcion->getMessage(), $vexcepcion->getCode());
         }
     }
+    
+    public static function AsignarCabaniaReservacion($vmySql,$vflreservacion,$vflasignarcabania){
+    
+            try {
+//It sets sql statement in order to Cabaña a Reservacion
+//            echo '<pre>';
+//            var_dump($vflcabania);
+//            echo '<pre>';
+            $vsql = "INSERT INTO c_asignacioncabania(id_reservacion,id_cabania) ";
+            $vsql.="VALUES('" . $vflreservacion->idreservacion . "'";
+            $vsql.=", '" . $vflasignarcabania->idcabania . "')";
+            if ($vmySql->consulta($vsql)) {
+
+                if ($vmySql->ObtenerNumeroFilasAfectadas() != 1) {
+                    return 0;
+                }
+            }
+            unset($vsql, $vmySql);
+           
+            return 1;
+        } catch (Exception $vexcepcion) { //It catches exception /It returns exception code catched
+            throw new Exception($vexcepcion->getMessage(), $vexcepcion->getCode());
+        }
+    }
+
 
 }
+
+
+
+
 ?>

@@ -1,6 +1,6 @@
 
 
-var url = '../Controller/cabaniaController.php';
+var cabanias = '../Controller/cabaniaController.php';
 
 $(document).ready(function () {
 
@@ -12,7 +12,7 @@ function cargarCabanias() {
 
     $("#cabanias").html("");
 
-    $.getJSON(url + "/cabanias", function (vresponse) {
+    $.getJSON(cabanias + "/cabanias", function (vresponse) {
 
 
 

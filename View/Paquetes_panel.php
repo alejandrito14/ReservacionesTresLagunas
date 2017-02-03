@@ -31,18 +31,7 @@ include 'session_star.php';
         <script src="../Resource/js/jquery.isotope.min.js"></script>
         <script src="../Resource/js/jquery.min.js"></script>
         <script src="../Resource/js/paquetesmostrar.js"></script>
-        <!--[if IE]>
-                <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-        <!--[if IE 6]>
-                <script type="text/javascript" src="js/DD_belatedPNG.js"></script>
-                <script>
-                /* EXAMPLE */
-                //DD_belatedPNG.fix('*');
-        </script>
-        <![endif]-->
-        <!-- ENDS JS -->
+        <script src="../Resource/js/turistasdatos.js" type="text/javascript"></script>
 
 
         <!-- Nivo slider -->
@@ -94,6 +83,7 @@ include 'session_star.php';
     </head>
 
     <body class="home">
+            <div id="turistas"> <?php echo $_SESSION['idusuario']; ?>  </div>
 
         <!-- HEADER -->
         <div id="header">
@@ -132,7 +122,7 @@ include 'session_star.php';
                         <li><a href="">Reservaciones<span class="subheader">Reserva aqui</span></a>
                             <ul>
                                 <li><a href="turistaReservacion.php"><span> Reserva aqui</span></a></li>
-                                <li><a href=""><span> Tus reservaciones </span></a></li>
+                                <li><a href="misReservaciones.php"><span> Tus reservaciones </span></a></li>
 
                             </ul>
                         </li>
@@ -146,7 +136,7 @@ include 'session_star.php';
                     <!-- top user -->
                     <ul id="nav2" class="sf-menu ">
 
-                        <li><a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><img src="../Resource/img/3.jpg" alt="">Turista<span class="subheader">Alejandro Hernández</span></a>
+                            <li><a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><img src="../Resource/img/3.jpg" alt="">Turista<span class="subheader"><div id="datos"></div></span></a>
 
                             <ul>
 

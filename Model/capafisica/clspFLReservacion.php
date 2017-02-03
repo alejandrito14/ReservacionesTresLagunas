@@ -16,6 +16,7 @@ class clspFLReservacion {
     public $comprobantePago;
     public $idusuario;
     public $idestadoReservacion;
+    public $idreservacionprotegido;
 //    public $idcabania;
 //    public $idpaquete;
 //    public $idactividad;
@@ -29,9 +30,8 @@ class clspFLReservacion {
         $this->comprobantePago=0;
         $this->idusuario=0;
         $this->idestadoReservacion=0;
-        $this->idcabania=0;
-        $this->idpaquete=0;
-        $this->idactividad=0;
+        $this->idreservacionprotegido=0;
+  
          
      }
 
@@ -45,9 +45,7 @@ class clspFLReservacion {
       unset($comprobantePago);
       unset($idusuario);
       unset($idestadoReservacion);
-      unset($idcabania);
-      unset($idpaquete);
-      unset($idactividad);
+      unset($idreservacionprotegido);
          
      }
      

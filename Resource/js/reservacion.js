@@ -169,13 +169,11 @@ function reservacion(){
         dataType: "JSON",
         data: JSON.stringify(datosformulario),
         success: function (vresponse) {
+           if (vresponse.messageNumber == '1') {
+                alert(' Se agrego reservacion correctamente ');
 
-//            if (vresponse.messageNumber == '1') {
-//                alert(' Se agrego paquete correctamente ');
-//
-//
-//
-//            }
+
+         }
         },
         error: function (verror) {
             alert(' Error al agregar');

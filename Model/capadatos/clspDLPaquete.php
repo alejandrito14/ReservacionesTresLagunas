@@ -11,8 +11,11 @@
  *
  * @author Alejandro hdez g
  */
-include_once '../Model/capafisica/clspFLPaquete.php';
-include_once '../Model/capafisica/clspFLActividad.php';
+//include_once '../Model/capafisica/clspFLPaquete.php';
+//include_once '../Model/capafisica/clspFLActividad.php';
+require_once (dirname(dirname(__FILE__)) . '../capafisica/clspFLActividad.php');
+
+require_once (dirname(dirname(__FILE__)) . '../capafisica/clspFLPaquete.php');
 
 
 
@@ -133,6 +136,30 @@ class clspDLPaquete {
         }
     }
     
+    public static function AsignarPaqueteReservacion($vmySql,$vflreservacion,$vflasignarpaquete){
+           try {
+//It sets sql statement in order to Cabaña a Reservacion
+//            echo '<pre>';
+//            var_dump($vflcabania);
+//            echo '<pre>';
+            $vsql = "INSERT INTO c_asignacionreservacionpaquete(id_reservacion,id_paquete) ";
+            $vsql.="VALUES('" . $vflreservacion->idreservacion . "'";
+            $vsql.=", '" . $vflasignarpaquete->idpaquete . "')";
+            if ($vmySql->consulta($vsql)) {
+
+                if ($vmySql->ObtenerNumeroFilasAfectadas() != 1) {
+                    return 0;
+                }
+            }
+            unset($vsql, $vmySql);
+           
+            return 1;
+        } catch (Exception $vexcepcion) { //It catches exception /It returns exception code catched
+            throw new Exception($vexcepcion->getMessage(), $vexcepcion->getCode());
+        }
+    }
+
+        
     
 
     

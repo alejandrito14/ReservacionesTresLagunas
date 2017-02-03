@@ -74,15 +74,9 @@ class clspDLTurista {
         
     }
     public static function agregarTurista($vmySql, $vflturistas) {
-//             $vmySql = new MySql();
-//             $vmySql->AbrirConexion();
 
         try {
 //It sets sql statement in order to add new turist
-//            echo '<pre>';
-//            var_dump($vflturistas);
-//            echo '<pre>';
-
 
             $vsql = "INSERT INTO c_turista(id_usuario,cmpnumeroTelefono,cmplugarOrigen, cmpfechaNacimiento) ";
             $vsql.="VALUES('" . $vflturistas->idusuario . "'";

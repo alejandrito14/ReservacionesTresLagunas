@@ -11,7 +11,9 @@
  *
  * @author Alejandro hdez g
  */
-include_once '../Model/capafisica/clspFLActividad.php';
+//include_once '../Model/capafisica/clspFLActividad.php';
+require_once (dirname(dirname(__FILE__)) . '../capafisica/clspFLActividad.php');
+
 
 class clspDLActividad {
 
@@ -111,8 +113,36 @@ class clspDLActividad {
         }
     }
     
-    
-   
+    public static function AsignarActividadReservacion($vmySql,$vflreservacion,$vflasignaractividad){
+            try {
+//It sets sql statement in order to add new asignarpaqueteActividad
+            $numeroactividades=0;
+
+            for ($i=0; $i < count($vflasignaractividad->idactividad); $i++) {
+
+                $vsql = "INSERT INTO c_asignacionreservacionactividad(id_reservacion,id_actividad) ";
+                $vsql.="VALUES('" . $vflreservacion->idreservacion . "'";
+
+                $vsql.=", '" . $vflasignaractividad->idactividad[$i] . "')";
+
+                if ($vmySql->consulta($vsql)) {
+
+                    if ($vmySql->ObtenerNumeroFilasAfectadas() != 1) {
+                        return 0;
+                    }
+                }
+                $numeroactividades++;
+            }
+            
+            $vflreservacion->numeroDeActividades=$numeroactividades;
+                
+            unset($vsql, $vmySql);
+            //   echo '1';
+            return 1;
+        } catch (Exception $vexcepcion) { //It catches exception /It returns exception code catched
+            throw new Exception($vexcepcion->getMessage(), $vexcepcion->getCode());
+        }
+    }
     
 
 }

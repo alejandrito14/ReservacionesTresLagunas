@@ -30,6 +30,7 @@ include 'session_star.php';
 		<!-- Isotope -->
 		<script src="../Resource/js/jquery.isotope.min.js"></script>
                 <script src="../Resource/js/actividadesmostrar.js"></script>
+                <script src="../Resource/js/turistasdatos.js" type="text/javascript"></script>
 
 		
 		<!--[if IE]>
@@ -94,6 +95,7 @@ include 'session_star.php';
 	</head>
 	
 	<body class="home">
+                        <div id="turistas"> <?php echo $_SESSION['idusuario']; ?>  </div>
 
 			<!-- HEADER -->
 			<div id="header">
@@ -132,8 +134,8 @@ include 'session_star.php';
 							<li><a href="">Reservaciones<span class="subheader">Reserva aqui</span></a>
 								<ul>
 									<li><a href="turistaReservacion.php"><span> Reserva aqui</span></a></li>
-									<li><a href=""><span> Tus reservaciones </span></a></li>
-						
+                                                                        <li><a href="misReservaciones.php"><span> Tus reservaciones </span></a></li>
+                                
 								</ul>
 							</li>
 							
@@ -146,7 +148,7 @@ include 'session_star.php';
 	                        <!-- top user -->
 	                        <ul id="nav2" class="sf-menu ">
 	                            
-	                            <li><a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><img src="../Resource/img/3.jpg" alt="">Turista<span class="subheader">Alejandro Hernandez</span></a>
+                            <li><a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><img src="../Resource/img/3.jpg" alt="">Turista<span class="subheader"><div id="datos"></div></span></a>
 
 	                                <ul>
 	                                    

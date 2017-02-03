@@ -213,7 +213,7 @@ include 'session_starAdmin.php';
 
                     <div class="page-title">
                         <div class="title_left">
-                            <h3> Paquetes</h3>
+                            <h3> Reservaciones</h3>
                         </div>
 
 

@@ -80,6 +80,7 @@ $app->get("/cabanias", function () use ($app, $result) {
     } catch (Exception $exception) {
 
         $vdataResponse["cabania"] = -100;
+		unset($resul,$obj,$coleccion);
     }
 
     echo json_encode($vdataResponse);
