@@ -47,12 +47,13 @@ if ($tipo == 'pdf') {
         <style> 
             body { font-family: arial;} 
             table {
-                width: 60%;
+                width: 80%;
                 color:black;
                 font-size:14px;
                 font-family:arial;
                 text-align: center;
-               margin-left: 20%;
+                
+              
             }
 
             thead {
@@ -94,31 +95,20 @@ if ($tipo == 'pdf') {
 
 
             }
-            footer {
-                position: relative;
-                /* Altura total del footer en px con valor negativo */
-                margin-top: 200px;
-                /* Altura del footer en px. Se han restado los 5px del margen
-                   superior mas los 5px del margen inferior
-                */
-                height: 40px;
-                padding:5px 0px;
-                clear: both;
-                background: #75C40F;
-                text-align: center;
-                color: #fff;
-            }
-
-            /* Esta clase define la anchura del contenido y la posicion centrada 
-               El contenido queda centrado y limitado, pero la cabecera y el pie
-               llegan hasta los limites del navegador.
-            */
+        footer {
+        background-color: #75C40F;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 40px;
+        color: white;
+}
             .define {
                 width:960px;
                 margin:0 auto;
             }
             .detalle{
-                margin-left: 18%;;
+               
             }
         </style> 
     </head>
@@ -226,6 +216,7 @@ if ($tipo == 'pdf') {
 
     </body> 
 </html> 
+
  
  ";
 

@@ -7,7 +7,9 @@
  * @author Alejandro hdez g
 
  */
-include '../Model/capafisica/clspFLUsuario.php';
+//include '../Model/capafisica/clspFLUsuario.php';
+require_once (dirname(dirname(__FILE__)) . '/capafisica/clspFLUsuario.php');
+
 
 class clspFLTurista extends clspFLUsuario 
 {

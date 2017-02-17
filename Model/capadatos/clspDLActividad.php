@@ -43,6 +43,26 @@ class clspDLActividad {
 
         return 0;
     }
+    
+      public static function ObtenerActividadporFolioReservacion($vmysql, $folio, $coleccion) {
+
+        $consulta = $vmysql->consulta("SELECT c_actividad.cmpnombreActividad,c_actividad.cmptarifa from c_actividad INNER JOIN c_asignacionreservacionactividad ON c_actividad.id_actividad=c_asignacionreservacionactividad.id_actividad WHERE c_asignacionreservacionactividad.id_reservacion==\"$folio\"  ");
+
+        if ($vmysql->num_rows($consulta) > 0) {
+            while ($resultados = $vmysql->fetch_array($consulta)) {
+                $actividad = new clspFLActividad();
+
+                $actividad->nombreActividad = $resultados['cmpnombreActividad'];
+                $actividad->tarifa = $resultados['cmptarifa'];
+
+                $coleccion->actividades [] = $actividad;
+                // echo json_encode($coleccion);
+            }
+            return 1;
+        }
+
+        return 0;
+    }
 
     public static function eliminar_actividad($vmysql, $id) {
         try {

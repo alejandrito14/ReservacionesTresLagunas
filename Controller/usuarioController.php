@@ -6,11 +6,13 @@
  * and open the template in the editor.
  */
 /*include '../Slim/Slim.php';*/
-include'../slim-3.3.0/autoload.php';
-include '../Model/capanegocio/clspBLUsuario.php';
-include '../Model/capafisica/clscFLUsuario.php';
+//include'../slim-3.3.0/autoload.php';
+//include '../Model/capanegocio/clspBLUsuario.php';
+//include '../Model/capafisica/clscFLUsuario.php';
 
-
+require_once ('../slim-3.3.0/autoload.php');
+require_once (dirname(dirname(__FILE__)) . '/Model/capafisica/clscFLUsuario.php');
+require_once (dirname(dirname(__FILE__)) . '/Model/capanegocio/clspBLUsuario.php');
 
 $app  = new Slim\App();
 

@@ -1,19 +1,19 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 /**
- * Description of clspUsuario
+ * Description of clspBLUsuario
  *
  * @author Alejandro hdez g
  */
 
-include '../Model/conexcion.php';
-include '../Model/capadatos/clspDLUsuario.php';
+//include '../Model/conexcion.php';
+require_once (dirname(dirname(__FILE__)) . '/conexcion.php');
+
+//include '../Model/capadatos/clspDLUsuario.php';
+require_once (dirname(dirname(__FILE__)) . '/capadatos/clspDLUsuario.php');
+
 class clspBLUsuario {
     //put your code here
     public function __construct() {

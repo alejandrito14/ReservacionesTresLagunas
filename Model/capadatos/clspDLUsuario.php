@@ -1,18 +1,15 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 /**
- * Description of clspUsuario
+ * Description of clspDLUsuario
  *
  * @author Alejandro hdez g
  */
-include_once '../Model/capafisica/clspFLUsuario.php';
-include_once '../Model/conexcion.php';
+require_once (dirname(dirname(__FILE__)) . '/capafisica/clspFLUsuario.php');
+require_once (dirname(dirname(__FILE__)) . '/conexcion.php');
+
 
 class clspDLUsuario {
 
@@ -37,6 +34,7 @@ class clspDLUsuario {
                 $usuario->nombre = $resultados['cmpnombre'];
                 $usuario->apellidoPaterno = $resultados['cmpapellidoPaterno'];
                 $usuario->apellidoMaterno = $resultados['cmpapellidoMaterno'];
+                $usuario->tipoUsuario=$resultados['id_tipoUsuario'];
 
                 $coleccion->usuarios [] = $usuario;
                 //  echo json_encode($coleccion);

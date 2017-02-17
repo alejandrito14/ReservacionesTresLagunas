@@ -1,18 +1,15 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of clspBLActividad
  *
  * @author Alejandro hdez g
  */
-include_once '../Model/capadatos/clspDLActividad.php';
-include_once '../Model/conexcion.php';
+require_once (dirname(dirname(__FILE__)) . '/capadatos/clspDLActividad.php');
+require_once (dirname(dirname(__FILE__)) . '/conexcion.php');
+
+//include_once '../Model/capadatos/clspDLActividad.php';
+//include_once '../Model/conexcion.php';
 class clspBLActividad {
     //put your code here
      function __construct() {
@@ -36,6 +33,18 @@ class clspBLActividad {
         $mysql->CerrarConexion();
     }
     
+    public static function ObtenerActividadporFolioReservacion($folio, $coleccion) {
+
+
+        $vmysql = new Mysql();
+        $vmysql->AbrirConexion();
+
+        $result = clspDLActividad::ObtenerActividadporFolioReservacion($vmysql, $folio, $coleccion);
+        
+        return $result;
+      
+        $vmysql->CerrarConexion();
+    }
     
     public static function insertar_actividad($vflactividad) {
 

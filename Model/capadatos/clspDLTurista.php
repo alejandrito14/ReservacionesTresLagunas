@@ -5,7 +5,9 @@
 /**
  * 
  */
-include '../Model/capafisica/clspFLTurista.php';
+//include '../Model/capafisica/clspFLTurista.php';
+require_once (dirname(dirname(__FILE__)) . '/capafisica/clspFLTurista.php');
+
 
 class clspDLTurista {
 
@@ -18,7 +20,7 @@ class clspDLTurista {
     }
 
     public static function listarTuristas($mysql, $coleccion) {
-        $consulta = $mysql->consulta("SELECT c_usuario.id_usuario,c_usuario.cmpcorreo,c_usuario.cmpcontrasena,c_usuario.cmpnombre,c_usuario.cmpapellidoPaterno,c_usuario.cmpapellidoMaterno,c_turista.cmpnumeroTelefono,c_turista.cmplugarOrigen,c_turista.cmpfechaNacimiento FROM c_usuario INNER JOIN c_turista ON c_usuario.id_usuario=c_turista.id_usuario");
+        $consulta = $mysql->consulta("SELECT c_usuario.id_usuario,c_usuario.cmpcorreo,c_usuario.cmpcontrasena,c_usuario.cmpnombre,c_usuario.cmpapellidoPaterno,c_usuario.cmpapellidoMaterno,c_turista.cmpnumeroTelefono,c_turista.cmplugarOrigen,c_turista.cmpfechaNacimiento,c_usuario.id_tipoUsuario FROM c_usuario INNER JOIN c_turista ON c_usuario.id_usuario=c_turista.id_usuario");
         if ($mysql->num_rows($consulta) > 0) {
             while ($resultados = $mysql->fetch_array($consulta)) {
                 $turista = new clspFLTurista();
@@ -33,6 +35,7 @@ class clspDLTurista {
                 $turista->numeroTelefono = $resultados['cmpnumeroTelefono'];
                 $turista->lugarOrigen = $resultados['cmplugarOrigen'];
                 $turista->fechaNacimiento = $resultados['cmpfechaNacimiento'];
+                $turista->tipoUsuario=$resultados['id_tipoUsuario'];
 
                 $coleccion->turistas [] = $turista;
                 //  echo json_encode($coleccion);

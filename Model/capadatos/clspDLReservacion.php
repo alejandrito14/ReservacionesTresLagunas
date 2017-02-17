@@ -123,15 +123,45 @@ class clspDLReservacion {
                 $reservacion->idreservacion=$resultados['id_reservacion'];
                 $reservacion->fechaEntrada=$resultados['cmpfechaEntrada'];
                 $reservacion->fechaSalida=$resultados['cmpfechaSalida'];
+                $reservacion->numeroDeActividades=$resultados['cmpnumeroDeActividades'];
                 $reservacion->cantidadPersonas=$resultados['cmpcantidadPersonas'];
                 $reservacion->idestadoReservacion=$resultados['id_estadoReservacion'];
                 $reservacion->idusuario=$resultados['id_usuario'];
-             
-                
-             
-                
+                                
+                $coleccion->reservaciones[] = $reservacion;
+                // echo json_encode($coleccion);
+            }
+            return 1;
+        }
 
+        return 0;
+        
+        
+    }
+    
+    
+       public static function ObtenerReservaciones($vmySql , $coleccion){
+           
+          $consulta = $vmySql->consulta("SELECT p_reservacion.id_reservacion,p_reservacion.cmpfechaEntrada,p_reservacion.cmpfechaSalida,p_reservacion.cmpcantidadPersonas,
+p_reservacion.cmpcomprobantePago,p_reservacion.id_estadoReservacion,c_usuario.cmpnombre,c_usuario.cmpapellidoPaterno,c_usuario.cmpapellidoMaterno,c_cabania.cmpnombre,
+c_cabania.cmptarifa FROM p_reservacion  INNER JOIN c_usuario ON p_reservacion.id_usuario=c_usuario.id_usuario inner JOIN c_asignacioncabania ON p_reservacion.id_reservacion=c_asignacioncabania.id_reservacion INNER JOIN c_cabania ON c_asignacioncabania.id_cabania=c_cabania.id_cabania");
 
+        if ($vmySql->num_rows($consulta) > 0) {
+            while ($resultados = $vmySql->fetch_array($consulta)) {
+                $reservacion = new clspFLReservacion();
+                $reservacion->idreservacion=$resultados['id_reservacion'];
+                $reservacion->fechaEntrada=$resultados['cmpfechaEntrada'];
+                $reservacion->fechaSalida=$resultados['cmpfechaSalida'];
+                $reservacion->cantidadPersonas=$resultados['cmpcantidadPersonas'];
+                $reservacion->idestadoReservacion=$resultados['id_estadoReservacion'];
+                $turista=new clspFLUsuario();
+                $turista->nombre=$resultados['cmpnombre'];
+                $turista->apellidoPaterno=$resultados['cmpapellidoPaterno'];
+                $turista->apellidoMaterno=$resultados['cmpapellidoMaterno'];
+                $cabania=new clspFLCabania();
+                $cabania->nombre=$resultados['cmpnombre'];
+                $cabania->tarifa=$resultados['cmptarifa'];
+                                
                 $coleccion->reservaciones[] = $reservacion;
                 // echo json_encode($coleccion);
             }

@@ -30,9 +30,10 @@ function mostrarReservaciones(){
                     " <p> Folio: " + reservaciones.idreservacion + "</p>" +
                     " <p>Fecha Entrada:  " + reservaciones.fechaEntrada + "</p>" +
                     " <p> Fecha Salida: " + reservaciones.fechaSalida + "</p>" +
+                    "<p> Añadir Baucher</p>"+
                     "<input id='file-3' type='file' multiple=true>"+
                     " <a href='Reportes/Referencia.php?folio="+reservaciones.idreservacion+ "&t=pdf' target='_blank'><span><img src='../Resource/img/icono-pdf.png '/></span></a> " +
-                        
+                   "<p>Descarga Aqui tu referencia</p>"+        
                     "<p>" +
                    
                     "</p>" +

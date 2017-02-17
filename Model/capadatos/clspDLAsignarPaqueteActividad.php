@@ -5,7 +5,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-include '../Model/capafisica/clspFLAsignarPaqueteActividad.php';
+//include '../Model/capafisica/clspFLAsignarPaqueteActividad.php';
+require_once (dirname(dirname(__FILE__)) . '/capafisica/clspFLAsignarPaqueteActividad.php');
 
 /**
  * Description of clspDLAsignarPaqueteActividad

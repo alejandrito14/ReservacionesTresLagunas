@@ -4,8 +4,11 @@
 /**
  * 
  */
-include_once '../Model/capadatos/clspDLCabania.php';
-include_once '../Model/conexcion.php';
+//include_once '../Model/capadatos/clspDLCabania.php';
+//include_once '../Model/conexcion.php';
+require_once (dirname(dirname(__FILE__)) . '/capadatos/clspDLCabania.php');
+require_once (dirname(dirname(__FILE__)) . '/conexcion.php');
+
 
 class clspBLCabania {
 
@@ -50,6 +53,20 @@ class clspBLCabania {
         return $result;
 
         $mysql->CerrarConexion();
+    }
+    
+    
+    
+        public static function ObtenerCabaniaporFolioReservacion($coleccion,$folio){
+        
+        $vmysql = new Mysql();
+        $vmysql->AbrirConexion();
+
+        $result = clspDLCabania::ObtenerCabaniaporFolioReservacion($vmysql, $coleccion, $folio);
+
+        return $result;
+
+        $vmysql->CerrarConexion();
     }
 
     public static function editar_cabania($vflcabania) {

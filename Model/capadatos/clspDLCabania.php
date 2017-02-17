@@ -88,6 +88,29 @@ class clspDLCabania {
         
         
     }
+    
+    
+     public static function ObtenerCabaniaporFolioReservacion($vmysql, $coleccion,$nombre){
+        
+        $consulta = $vmysql->consulta("SELECT c_cabania.cmpnombre,c_cabania.cmptarifa from c_cabania INNER JOIN c_asignacioncabania ON c_cabania.id_cabania=c_asignacioncabania.id_cabania WHERE c_asignacioncabania.id_reservacion='%".$nombre."%'");
+
+        if ($vmysql->num_rows($consulta) > 0) {
+            while ($resultados = $vmysql->fetch_array($consulta)) {
+                $cabania = new clspFLCabania();
+           
+                $cabania->nombre = $resultados['cmpnombre'];
+                $cabania->tarifa = $resultados['cmptarifa'];
+             
+                $coleccion->cabanias [] = $cabania;
+                // echo json_encode($coleccion);
+            }
+            return 1;
+        }
+
+        return 0;  
+        
+        
+    }
 
     public static function eliminar_cabania($vmysql, $id) {
         try {

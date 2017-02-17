@@ -1,20 +1,23 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 /**
  * Description of clspBLPaquete
  *
  * @author Alejandro hdez g
  */
-include_once '../Model/capadatos/clspDLPaquete.php';
-include_once '../Model/capadatos/clspDLAsignarPaqueteActividad.php';
+//include_once '../Model/capadatos/clspDLPaquete.php';
+//include_once '../Model/capadatos/clspDLAsignarPaqueteActividad.php';
+//
+//include_once '../Model/conexcion.php';
 
-include_once '../Model/conexcion.php';
+require_once (dirname(dirname(__FILE__)) . '/capadatos/clspDLPaquete.php');
+require_once (dirname(dirname(__FILE__)) . '/capadatos/clspDLAsignarPaqueteActividad.php');
+require_once (dirname(dirname(__FILE__)) . '/conexcion.php');
+
+
+
 class clspBLPaquete {
     //put your code here
     

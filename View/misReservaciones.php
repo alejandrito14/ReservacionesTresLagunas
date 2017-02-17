@@ -178,9 +178,12 @@ include 'session_star.php';
 
 
         <div id="x_content">
-            <h3 class="" >Mis Reservaciones</h3>
+            
+            
+           
+                
             <div id="misreservaciones"></div>
-
+  
             <div class="modal fade" id="Detalles" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">

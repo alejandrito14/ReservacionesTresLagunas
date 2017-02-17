@@ -38,12 +38,12 @@
       
         </br>
         <div class="row center">
-                                <a href="#!" class="brand-logo"><i class="material-icons"><img src="../Resource/img/logo.png" class="imagen"></i></a>
+            <a href="login-turista.php" class="brand-logo"><i class="material-icons"><img src="../Resource/img/logo.png" class="imagen"></i></a>
 
             <h2>Reserva en Tres Lagunas</h2>
             <div id="content"></div>
             <h3>Se te ha enviado un correo de Confirmación</h3> 
-            <a href="http://treslagunas.com.mx/" class="btn-large waves-effect waves-light">Explore nuestra servicios</a>
+            <a href="http://treslagunas.com.mx/" class="btn-large waves-effect waves-light">Explore nuestros servicios</a>
             
             
         </div>

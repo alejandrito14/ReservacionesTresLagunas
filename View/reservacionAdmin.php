@@ -27,8 +27,8 @@ include 'session_starAdmin.php';
         <script type="text/javascript" src="../Resource/js/jquery-1.3.2.min.js" ></script> 
         <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
         crossorigin="anonymous"></script>
-                <script src="../Resource/js/paquetesAdmin.js"></script>
-
+<!--                <script src="../Resource/js/paquetesAdmin.js"></script>-->
+                <script src="../Resource/js/reservacionAdmin.js"></script>    
         <!-- Custom Theme Style -->
         <link href="../Resource/build/css/custom.min.css" rel="stylesheet">
     </head>
@@ -74,7 +74,7 @@ include 'session_starAdmin.php';
 
                                     <li><a><i class="fa fa-home"></i> Reservaciones <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li><a href="">Reservaciones</a></li>
+                                            <li><a href="reservacionAdmin.php">Reservaciones</a></li>
 
                                         </ul>
                                     </li>
@@ -244,12 +244,18 @@ include 'session_starAdmin.php';
                                                     <a href="ingresarPaquete.php" class="btn btn-primary" role="button">Nuevo</a>
                                                 </div>
                                             </div>
-                                            <table class="table table-bordered table-hover " id="tablaPaquetes">
+                                            <table class="table table-bordered table-hover " id="tablaReservaciones">
                                                 <thead>
-                                                <th>Id</th>
-                                                <th>Nombre</th>
-                                                <th>Tarifa</th>
-                                                <th>Detalle</th>
+                                                <th>Folio</th>
+                                                <th>Fecha Entrada</th>
+                                                <th>Fecha Salida</th>
+                                                <th>Numero de Actividades</th>
+                                                <th>Cantidad P</th>
+                                                <th>Comprobante</th>
+                                                <th>Estado Reservacion</th>
+
+
+
                                                 <th>Opciones</th>    
                                                 </thead>
                                                 <tbody></tbody>

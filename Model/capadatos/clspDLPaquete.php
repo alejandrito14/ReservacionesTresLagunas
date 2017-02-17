@@ -17,12 +17,10 @@ require_once (dirname(dirname(__FILE__)) . '../capafisica/clspFLActividad.php');
 
 require_once (dirname(dirname(__FILE__)) . '../capafisica/clspFLPaquete.php');
 
-
-
-
 class clspDLPaquete {
+
     //put your code here
-      public function __construct() {
+    public function __construct() {
         
     }
 
@@ -42,8 +40,8 @@ class clspDLPaquete {
                 $paquete->nombrePaquete = $resultados['cmpnombrePaquete'];
                 $paquete->tarifa = $resultados['cmptarifa'];
                 $paquete->detalle = $resultados['cmpdetalle'];
-                
-                
+
+
 
 
                 $coleccion->paquetes [] = $paquete;
@@ -54,8 +52,8 @@ class clspDLPaquete {
 
         return 0;
     }
-    
-       public static function listaractividadesdepaquete($mysql, $id,$coleccion) {
+
+    public static function listaractividadesdepaquete($mysql, $id, $coleccion) {
 
         $consulta = $mysql->consulta("SELECT c_actividad.id_actividad,c_actividad.cmpnombreActividad,c_actividad.cmptarifa FROM c_actividad INNER JOIN c_asignacionpaqueteactividad ON c_asignacionpaqueteactividad.id_actividad=c_actividad.id_actividad where c_asignacionpaqueteactividad.id_paquete=\"$id\"  ");
 
@@ -79,14 +77,14 @@ class clspDLPaquete {
 
         return 0;
     }
-    
-    
-    
-     public static function eliminar_paquete($vmySql,$id){
-        try{
-        $consulta=$vmySql->consulta( "DELETE FROM c_paquete WHERE id_paquete=\"$id\" ");
-        
-         if ($consulta) {
+
+  
+
+    public static function eliminar_paquete($vmySql, $id) {
+        try {
+            $consulta = $vmySql->consulta("DELETE FROM c_paquete WHERE id_paquete=\"$id\" ");
+
+            if ($consulta) {
 
                 if ($vmySql->ObtenerNumeroFilasAfectadas() != 1) {
                     return 0;
@@ -95,16 +93,13 @@ class clspDLPaquete {
             unset($consulta, $vmySql);
 
             return 1;
-        }catch(Exception $vexcepcion){
-            
-               throw new Exception($vexcepcion->getMessage(), $vexcepcion->getCode());
- 
-            
+        } catch (Exception $vexcepcion) {
+
+            throw new Exception($vexcepcion->getMessage(), $vexcepcion->getCode());
         }
-        
     }
-    
-   public static function insertarPaquete($vmySql, $vflAsignarPaqueteActividad) {
+
+    public static function insertarPaquete($vmySql, $vflAsignarPaqueteActividad) {
 
         try {
 //It sets sql statement in order to add new cabaña
@@ -115,13 +110,13 @@ class clspDLPaquete {
             $vsql.="VALUES('" . $vflAsignarPaqueteActividad->nombrePaquete . "'";
             $vsql.=", '" . $vflAsignarPaqueteActividad->tarifaPaquete . "'";
             $vsql.=", '" . $vflAsignarPaqueteActividad->detallePaquete . "')";
-            
+
             if ($vmySql->consulta($vsql)) {
-                
-                 $id_ultimo_paquete = mysql_insert_id();
-                 
-                 $vflAsignarPaqueteActividad->id_paquete=$id_ultimo_paquete;
-               
+
+                $id_ultimo_paquete = mysql_insert_id();
+
+                $vflAsignarPaqueteActividad->id_paquete = $id_ultimo_paquete;
+
                 if ($vmySql->ObtenerNumeroFilasAfectadas() != 1) {
                     return 0;
                 }
@@ -129,15 +124,15 @@ class clspDLPaquete {
 
 
             unset($vsql, $vmySql);
-           
+
             return 1;
         } catch (Exception $vexcepcion) { //It catches exception /It returns exception code catched
             throw new Exception($vexcepcion->getMessage(), $vexcepcion->getCode());
         }
     }
-    
-    public static function AsignarPaqueteReservacion($vmySql,$vflreservacion,$vflasignarpaquete){
-           try {
+
+    public static function AsignarPaqueteReservacion($vmySql, $vflreservacion, $vflasignarpaquete) {
+        try {
 //It sets sql statement in order to Cabaña a Reservacion
 //            echo '<pre>';
 //            var_dump($vflcabania);
@@ -152,15 +147,11 @@ class clspDLPaquete {
                 }
             }
             unset($vsql, $vmySql);
-           
+
             return 1;
         } catch (Exception $vexcepcion) { //It catches exception /It returns exception code catched
             throw new Exception($vexcepcion->getMessage(), $vexcepcion->getCode());
         }
     }
 
-        
-    
-
-    
 }
