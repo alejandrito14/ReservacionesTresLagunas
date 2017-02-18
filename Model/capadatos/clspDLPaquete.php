@@ -153,5 +153,25 @@ class clspDLPaquete {
             throw new Exception($vexcepcion->getMessage(), $vexcepcion->getCode());
         }
     }
+        public static function editarPaquete($vmySql,$vflpaquete) {
+        try {
+           // $vsql = "UPDATE c_cabania SET cmpnombre=\"$vflcabania->nombre\",cmpdescripcion=\"$vflcabania->descripcion\",cmptarifa=\"$vflcabania->tarifa\"  WHERE id_cabania=\"$vflcabania->idcabania\" ";
+            $consulta = $vmySql->consulta("UPDATE c_paquete SET cmpnombrePaquete=\"$vflpaquete->nombrePaquete\",cmptarifa=\"$vflpaquete->tarifa\",cmpdetalle=\"$vflpaquete->detalle\"  WHERE id_paquete=\"$vflpaquete->idPaquete\" ");
+
+            if ($consulta) {
+
+                if ($vmySql->ObtenerNumeroFilasAfectadas() != 1) {
+                    return 0;
+                }
+               
+            }
+
+            unset($consulta, $vmySql);
+            return 1; 
+        } catch (Exception $vexcepcion) {
+
+            throw new Exception($vexcepcion->getMessage(), $vexcepcion->getCode());
+        }
+    }
 
 }

@@ -49,7 +49,8 @@ $app->post("/reservacion", function ($vrequest) {
         if ($vstatus = 1) {
 
             $vdataResponse["messageNumber"] = $vstatus;
-        }
+       unset($vrequest,$vflasignaractividad,$vflasignarpaquete,$vflasignarcabania,$vflreservacion);
+            }
 
         } catch (Exception $exception) {
 

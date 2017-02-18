@@ -60,7 +60,7 @@ $app->delete("/paquetes/{idpaquete}", function ($vresponse) {
         $obj=new clspBLPaquete();
         $vstatus=$obj->eliminar_paquete($id);
         
-       if ($vstatus = 1) {
+       if ($vstatus>0) {
 
               $vdataResponse["messageNumber"] =$vstatus;
         }
@@ -134,7 +134,41 @@ $dataResponse["actividades"]=-100;
 
 });
     
-    
+ $app->put('/paquetes/{idpaquete}', function ($vrequest) {
+   
+     $vdataResponse = array();
+
+    try {
+
+   $vbody =$vrequest->getBody();
+   $ventrada=  json_decode($vbody);
+   
+  
+  // var_dump($ventrada);
+        $vflpaquete = new clspFLPaquete();
+        
+        $vflpaquete->idPaquete=$ventrada->paquete;
+        $vflpaquete->nombrePaquete=$ventrada->txtnombre;
+        $vflpaquete->tarifa=$ventrada->txttarifa;
+        $vflpaquete->detalle=$ventrada->txtdetalle;
+        $vstatus=  clspBLPaquete::editarPaquete($vflpaquete);
+        
+        
+       
+        
+        if($vstatus=1){
+           
+            $vdataResponse["messageNumber"]=$vstatus;
+        }
+        
+        
+    } catch (Exception $exception) {
+
+        $vdataResponse["messageNumber"] = -100;
+    }
+
+    echo json_encode($vdataResponse);
+});   
 
 
 

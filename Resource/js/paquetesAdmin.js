@@ -6,7 +6,7 @@ $(document).ready(function () {
     cargarTabla();
 
     $("#btnguardar").attr("onclick", "guardarP()");
-
+    $("#btnEditar").attr("onclick", "Editar()");
 
 });
 
@@ -48,15 +48,15 @@ function cargarTabla() {
 
 
 function detalles(id) {
-        $('#content').html('<div><img src="../Resource/img/loading2.gif"/></div>');
+    $('#content').html('<div><img src="../Resource/img/loading2.gif"/></div>');
 
-  $("#veractividades").html("");
+    $("#veractividades").html("");
     $.getJSON(url2 + "/paquetesactividades/" + id, function (vresponse) {
         // console.log(cabanias);
         // 
         // alert(vresponse.cabanias.cabanias.length);
-         
- $('#content').fadeIn(1000).html(vresponse);
+
+        $('#content').fadeIn(1000).html(vresponse);
 
         $.each(vresponse.actividades.actividades, function (i, actividades) {
             // console.log(cabanias);
@@ -66,11 +66,11 @@ function detalles(id) {
                     + "<p> Actividad :" + actividades.nombreActividad + "</p>"
                     + "<p> Costo $ " + actividades.tarifa + "</p>"
                     + "</div>";
-            
+
             $(actividades).appendTo("#veractividades");
 
         });
-        
+
 
     });
 
@@ -98,9 +98,21 @@ function eliminar(id) {
             type: 'DELETE',
             url: url2 + "/paquetes/" + id,
             success: function (vresponse) {
-                alert(' Se eiimino correctamente');
 
-                cargarTabla();
+                if (vresponse.messageNumber == '1') {
+
+                    alert(' Se eiimino correctamente');
+                    cargarTabla();
+                }
+
+                else 
+                if (vresponse.messageNumber == '2') {
+
+                    alert("Existen Reservaciones con este Paquete");
+                    cargarTabla();
+                }
+
+
             },
             error: function (verror) {
                 alert('Error al eliminar');
@@ -116,20 +128,36 @@ function eliminar(id) {
 }
 
 
-function editar(id) {
+function Editar() {
+
+
+    var idpaquete = $("#paquete").val();
+
+    var formEditar = $("#editarP").serializeObject();
+
+
 
     $.ajax({
-        type: 'GET',
-        url: url2 + "/paquetes/" + id,
+        type: 'PUT',
+        url: url2 + "/paquetes/" + idpaquete,
+        dataType: "JSON",
+        data: JSON.stringify(formEditar),
         success: function (vresponse) {
+
+            if (vresponse.messageNumber == '1') {
+
+                alert("Se edito correctamente");
+                cargarTabla();
+            }
 
         },
         error: function (verror) {
-            alert('delete error');
+            alert("Error al editar");
+
+
         }
 
     });
-
 
 }
 

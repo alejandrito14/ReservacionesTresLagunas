@@ -232,7 +232,7 @@ include 'session_starAdmin.php';
 
                                         <div class="row ">
                                             <div class="form-group">
-                                                <div class="col-xs-4  text-right">
+<!--                                                <div class="col-xs-4  text-right">
                                                     <label for="buscar" class="control-label">Buscar:</label>
                                                 </div>
                                                 <div class="col-xs-4">
@@ -242,7 +242,7 @@ include 'session_starAdmin.php';
 
                                                 <div class="col-xs-1">
                                                     <a href="ingresarPaquete.php" class="btn btn-primary" role="button">Nuevo</a>
-                                                </div>
+                                                </div>-->
                                             </div>
                                             <table class="table table-bordered table-hover " id="tablaReservaciones">
                                                 <thead>

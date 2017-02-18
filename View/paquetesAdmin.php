@@ -13,8 +13,11 @@ include 'session_starAdmin.php';
         <title>Tres LAgunas | admin </title>
 
         <!-- Bootstrap -->
-        <link href="../Resource/css/bootstrap.min.css" rel="stylesheet">
+         <script src="../Resource/js/jquery.min.js"></script>
+         <script src="../Resource/js/paquetesAdmin.js"></script>
 
+       
+        <link href="../Resource/css/bootstrap.min.css" rel="stylesheet">
         <!-- Font Awesome -->
         <link href="../Resource/css/font-awesome.min.css" rel="stylesheet">
         <!-- NProgress -->
@@ -24,11 +27,9 @@ include 'session_starAdmin.php';
         <!-- bootstrap-progressbar -->
         <link href="../Resource/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
         <!-- JQVMap -->
-        <script type="text/javascript" src="../Resource/js/jquery-1.3.2.min.js" ></script> 
         <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
         crossorigin="anonymous"></script>
-                <script src="../Resource/js/paquetesAdmin.js"></script>
-
+    
         <!-- Custom Theme Style -->
         <link href="../Resource/build/css/custom.min.css" rel="stylesheet">
     </head>
@@ -346,7 +347,7 @@ include 'session_starAdmin.php';
                                     <h4 class="modal-title" id="myModalLabel2">Editar Paquete</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="form-group" id="formEditar" name="formEditar" >
+                                    <form class="form-group" id="editarP" name="editarP" >
                                         <input class="form-control" id="paquete" type="hidden" name="paquete"/>
      
                                     <label class="control-label ">Nombre de Paquete</label>
@@ -359,13 +360,14 @@ include 'session_starAdmin.php';
                                     <input class="form-control" id="txtdetalle" type="text" name="txtdetalle"/>
                                     
                                     
-                                       <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                     <button id="btnEditar" class="btn btn-success" type="button"  >Guardar cambios</button>                
-                                     </div>
+                                       
                                     
                                     
                                      </form>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                     <button id="btnEditar" class="btn btn-success" type="button"  >Guardar cambios</button>                
+                                     </div>
                                 </div>
                             
                             </div>
@@ -655,5 +657,7 @@ include 'session_starAdmin.php';
 
         </script>
         <!-- /gauge.js -->
+                <script src="../Resource/js/jquery-functions.js"></script> 
+
     </body>
 </html>

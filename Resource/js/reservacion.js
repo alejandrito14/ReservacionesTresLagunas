@@ -171,6 +171,7 @@ function reservacion(){
         success: function (vresponse) {
            if (vresponse.messageNumber == '1') {
                 alert(' Se agrego reservacion correctamente ');
+                                location.href = '../View/misReservaciones.php';
 
 
          }

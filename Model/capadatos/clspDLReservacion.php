@@ -26,7 +26,7 @@ class clspDLReservacion {
 
         if ($vmySql->num_rows($consulta) > 0) {
             while ($resultados = $vmySql->fetch_array($consulta)) {
-                $ultimoFolio=$resultados['idservacion'];
+                $ultimoFolio=$resultados['id_reservacion'];
               
                 list($numerico,$anio)=  explode("-",$ultimoFolio);
                 
@@ -109,6 +109,18 @@ class clspDLReservacion {
         } catch (Exception $vexcepcion) {
 
             throw new Exception($vexcepcion->getMessage(), $vexcepcion->getCode());
+        }
+        
+    }
+    public static function ObtenerPaqueteExistente($vmySql,$id){
+        
+        
+        $consulta=$vmySql->consulta("SELECT * FROm p_reservacion inner JOIN c_asignacionreservacionpaquete on p_reservacion.id_reservacion=c_asignacionreservacionpaquete.id_reservacion WHERe id_paquete=\"$id\"");
+    
+        if($vmySql->num_rows($consulta)>0){
+            return 2;
+        }else{
+            return 0;
         }
         
     }

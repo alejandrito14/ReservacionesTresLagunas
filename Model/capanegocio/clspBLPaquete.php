@@ -13,6 +13,7 @@
 //include_once '../Model/conexcion.php';
 
 require_once (dirname(dirname(__FILE__)) . '/capadatos/clspDLPaquete.php');
+require_once (dirname(dirname(__FILE__)) . '/capadatos/clspDLReservacion.php');
 require_once (dirname(dirname(__FILE__)) . '/capadatos/clspDLAsignarPaqueteActividad.php');
 require_once (dirname(dirname(__FILE__)) . '/conexcion.php');
 
@@ -64,7 +65,10 @@ class clspBLPaquete {
           $vmySql = new Mysql();
         $vmySql->AbrirConexion();
         $vmySql->start_transaction();
-
+    if($existe=clspDLReservacion::ObtenerPaqueteExistente($vmySql, $id)==2){
+        
+        return 2;
+    }else{
         
    if($eliminarPaquete = clspDLAsignarPaqueteActividad::eliminarPaqueteActividad($vmySql, $id) ==1 ){
 
@@ -83,7 +87,9 @@ class clspBLPaquete {
                 return -1;
             }
         } 
-        $mysql->CerrarConexion();
+    }
+         return $result;
+        $vmySql->CerrarConexion();
         
         
     }
@@ -119,7 +125,17 @@ class clspBLPaquete {
         return 1;
     }
 
-    
+     public static function editarPaquete($vflpaquete) {
+        $vmySql = new Mysql();
+        $vmySql->AbrirConexion();
+
+        $vresultado=  clspDLPaquete::editarPaquete($vmySql,$vflpaquete);
+     
+          
+            return $vresultado;
+        
+        $vmySql->CerrarConexion();
+    }
     
     
     
