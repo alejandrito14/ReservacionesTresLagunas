@@ -99,6 +99,30 @@ public static function ObtenerReservacionporFolio($idprotegido,$vcoleccion) {
         $vmySql->CerrarConexion();
     }
     
+    public static function ActualizarComprobante($vflreservacion){
+        
+          $vmySql = new Mysql();
+        $vmySql->AbrirConexion();
+
+        $result = clspDLReservacion::ActualizarComprobante($vflreservacion,$vmySql);
+
+        return $result;
+
+        $vmySql->CerrarConexion();
+    }
+    
+    public static function ActualizarEstadoReservacion($vflreservacion){
+          $vmySql = new Mysql();
+        $vmySql->AbrirConexion();
+
+        $result = clspDLReservacion::ActualizarEstadoReservacion($vflreservacion,$vmySql);
+
+        return $result;
+
+        $vmySql->CerrarConexion();
+        
+    }
+    
         public static function ObtenerReservacionporIdUsuario($idusuario,$coleccion) {
         $vmySql = new Mysql();
         $vmySql->AbrirConexion();

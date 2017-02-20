@@ -55,6 +55,12 @@ class clspBLTurista {
         $vmySql = new Mysql();
         $vmySql->AbrirConexion();
         $vmySql->start_transaction();
+        
+        if(clspDLUsuario::ExisteUsuario($vmySql,$vflturistas)==2){
+            
+            return 2;
+        } 
+        else{
 
         if ($result = clspDLUsuario::agregarUsuarios($vmySql, $vflturistas) == 1) {
 
@@ -80,6 +86,9 @@ class clspBLTurista {
 
             return 0;
         }
+             
+          
+    }
         $vmySql->CerrarConexion();
 
         return 1;

@@ -24,9 +24,13 @@ function registrar()
 
                 location.href = '../View/confirmacion.php';
             }
+            if(vresponse.messageNumber == '2'){
+                location.href = '../View/turista.php';
+            }
 
         },
         error: function (verror) {
+                alert("Error");
 
         }
 

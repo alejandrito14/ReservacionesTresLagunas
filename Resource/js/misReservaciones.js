@@ -31,7 +31,9 @@ function mostrarReservaciones(){
                     " <p>Fecha Entrada:  " + reservaciones.fechaEntrada + "</p>" +
                     " <p> Fecha Salida: " + reservaciones.fechaSalida + "</p>" +
                     "<p> Añadir Baucher</p>"+
-                    "<input id='file-3' type='file' multiple=true>"+
+                    "<input type='file' name='archivo' style='font-size: 80%' id='archivo'accept='application/pdf' />"+
+                    "<button type='button' class='btn btn-success btn-sm' id='botonSubir'  onclick='uploadAjax(" + '"' +reservaciones.idreservacion + '"' + ")' >Subir Archivo</button>"+
+                    "</br>"+
                     " <a href='Reportes/Referencia.php?folio="+reservaciones.idreservacion+ "&t=pdf' target='_blank'><span><img src='../Resource/img/icono-pdf.png '/></span></a> " +
                    "<p>Descarga Aqui tu referencia</p>"+        
                     "<p>" +
@@ -53,4 +55,74 @@ function mostrarReservaciones(){
 function imprimir(id){
     
     alert(id);
+}
+
+function uploadAjax(idreservacion){
+    
+        var inputFileImage = document.getElementById("archivo");
+
+        var file = inputFileImage.files[0];
+        
+        if(inputFileImage==''){
+             alert("No eligio ningun archivo");
+         }
+
+        var data = new FormData();
+
+        data.append("archivo",file);
+
+         var message = ""; 
+        //hacemos la petición ajax  
+        $.ajax({
+            url: url6 +"/"+ idreservacion+ "/"+inputFileImage,  
+            type: 'POST',
+            // Form data
+            //datos del formulario
+            data: data,
+            //necesario para subir archivos via ajax
+            cache: false,
+            contentType: false,
+            processData: false,
+            //mientras enviamos el archivo
+            beforeSend: function(){
+                message = $("<span class='before'>Subiendo la imagen, por favor espere...</span>");
+                showMessage(message)        
+            },
+            //una vez finalizado correctamente
+            success: function(vresponse){
+                 if (vresponse.messageNumber == '0') {
+               
+                 alert("No se adjunto archivo");
+                }
+                
+                
+            },
+            //si ha ocurrido un error
+            error: function(){
+                message = $("<span class='error'>Ha ocurrido un error.</span>");
+                showMessage(message);
+            }
+        });
+  
+
+}
+
+function showMessage(message){
+    $(".messages").html("").show();
+    $(".messages").html(message);
+}
+ 
+//comprobamos si el archivo a subir es una imagen
+//para visualizarla una vez haya subido
+function isImage(extension)
+{
+    switch(extension.toLowerCase()) 
+    {
+        case 'pdf':
+            return true;
+        break;
+        default:
+            return false;
+        break;
+    }
 }

@@ -139,5 +139,15 @@ class clspDLUsuario {
         }
     }
     
-
+    public static function ExisteUsuario($vmySql,$vflturistas){
+        
+           
+        $consulta=$vmySql->consulta("SELECT cmpcorreo FROM c_usuario WHERE cmpcorreo=\"$vflturistas->correo\"");
+    
+        if($vmySql->num_rows($consulta)>0){
+            return 2;
+        }else{
+            return 0;
+        }
+    }
 }

@@ -49,10 +49,9 @@ $app->post("/reservacion", function ($vrequest) {
         if ($vstatus = 1) {
 
             $vdataResponse["messageNumber"] = $vstatus;
-       unset($vrequest,$vflasignaractividad,$vflasignarpaquete,$vflasignarcabania,$vflreservacion);
-            }
-
-        } catch (Exception $exception) {
+            unset($vrequest, $vflasignaractividad, $vflasignarpaquete, $vflasignarcabania, $vflreservacion);
+        }
+    } catch (Exception $exception) {
 
         $vdataResponse["messageNumber"] = -100;
     }
@@ -83,12 +82,12 @@ $app->get("/reservaciones", function () use ($app, $result) {
 
 $app->get("/reservaciones/{idusuario}", function ($vresponse) {
 
-   $idusuario=$vresponse->getAttribute('idusuario');
+    $idusuario = $vresponse->getAttribute('idusuario');
     $dataResponse = array();
     try {
         $obj = new clspBLReservacion();
         $coleccion = new clscFLReservacion();
-        $result = $obj->ObtenerReservacionporIdUsuario($idusuario,$coleccion);
+        $result = $obj->ObtenerReservacionporIdUsuario($idusuario, $coleccion);
         if ($result == 1) {
 
             $dataResponse['reservaciones'] = $coleccion;
@@ -104,8 +103,78 @@ $app->get("/reservaciones/{idusuario}", function ($vresponse) {
 
 
 
+$app->post('/{idreservacion}/{archivo}', function($vresponse) {
+
+    $vdataResponse = array();
+    $idreservacion = $vresponse->getAttribute('idreservacion');
+    try {
+
+        if (!isset($_FILES['archivo'])) {
+
+            $vdataResponse["messageNumber"] = 0;
+        } else {
+
+            $upload_folder = '../Facturas';
+
+            $nombre_archivo = $_FILES['archivo']['name'];
+
+            $tipo_archivo = $_FILES['archivo']['type'];
+
+            $tamano_archivo = $_FILES['archivo']['size'];
+
+            $tmp_archivo = $_FILES['archivo']['tmp_name'];
+
+            $archivador = $upload_folder . '/' . $idreservacion . $nombre_archivo;
+
+            copy($tmp_archivo, $archivador);
+
+//if (!move_uploaded_file($tmp_archivo, $archivador)) {
+//
+//$return = Array('ok' => FALSE, 'msg' => "Ocurrio un error al subir el archivo. No pudo guardarse.",'status' => 'error');
+//
+//}
+            $vflreservacion = new clspFLReservacion();
+            $vflreservacion->idreservacion = $idreservacion;
+            $vflreservacion->comprobantePago = $archivador;
+            $vstatus = clspBLReservacion::ActualizarComprobante($vflreservacion);
+            if ($vstatus == 1) {
+                $vdataResponse["messageNumber"] = $vstatus;
+            }
+        }
+    } catch (Exception $exception) {
+        $vdataResponse["messageNumber"] = -100;
+    }
+    echo json_encode($vdataResponse);
+});
+
+$app->put('/reservacion', function($vrequest) {
+
+    $vdataResponse = array();
+    try {
 
 
+
+
+        $vbody = $vrequest->getBody();
+        $ventrada = json_decode($vbody);
+
+
+        //var_dump($ventrada);
+        $vflreservacion = new clspFLReservacion();
+
+        $vflreservacion->idreservacion=$ventrada->txtreservacion;
+        $vflreservacion->idestadoReservacion=$ventrada->estado;
+       
+
+        $vstatus = clspBLReservacion::ActualizarEstadoReservacion($vflreservacion);
+        if ($vstatus == 1) {
+            $vdataResponse["messageNumber"] = $vstatus;
+        }
+    } catch (Exception $exception) {
+        $vdataResponse["messageNumber"] = -100;
+    }
+    echo json_encode($vdataResponse);
+});
 
 
 

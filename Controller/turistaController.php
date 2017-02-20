@@ -78,7 +78,7 @@ $app->post("/turistas", function ($vrequest) {
         $vstatus = clspBLTurista::insertar_turista($vflturistas);
 
 
-        if ($vstatus = 1) {
+        if ($vstatus >0) {
 
             $vdataResponse["messageNumber"] = $vstatus;
         }

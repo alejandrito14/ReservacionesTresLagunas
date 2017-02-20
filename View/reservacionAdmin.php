@@ -13,6 +13,9 @@ include 'session_starAdmin.php';
         <title>Tres LAgunas | admin </title>
 
         <!-- Bootstrap -->
+        <script src="../Resource/js/jquery.min.js"></script>
+         <script src="../Resource/js/reservacionAdmin.js"></script>    
+
         <link href="../Resource/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Font Awesome -->
@@ -23,13 +26,13 @@ include 'session_starAdmin.php';
         <link href="../Resource/css/green.css" rel="stylesheet">
         <!-- bootstrap-progressbar -->
         <link href="../Resource/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+
         <!-- JQVMap -->
         <script type="text/javascript" src="../Resource/js/jquery-1.3.2.min.js" ></script> 
         <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
         crossorigin="anonymous"></script>
-<!--                <script src="../Resource/js/paquetesAdmin.js"></script>-->
-                <script src="../Resource/js/reservacionAdmin.js"></script>    
-        <!-- Custom Theme Style -->
+
+                <!-- Custom Theme Style -->
         <link href="../Resource/build/css/custom.min.css" rel="stylesheet">
     </head>
 
@@ -132,7 +135,7 @@ include 'session_starAdmin.php';
                                     <ul class="dropdown-menu dropdown-usermenu pull-right">
                                       
                                        
-                                        <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a></li>
+                                        <li><a href="cerrar_sesion.php"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a></li>
                                     </ul>
                                 </li>
 
@@ -249,10 +252,10 @@ include 'session_starAdmin.php';
                                                 <th>Folio</th>
                                                 <th>Fecha Entrada</th>
                                                 <th>Fecha Salida</th>
-                                                <th>Numero de Actividades</th>
+                                                <th>Actividades</th>
                                                 <th>Cantidad P</th>
                                                 <th>Comprobante</th>
-                                                <th>Estado Reservacion</th>
+                                                <th>Edo Reservacion</th>
 
 
 
@@ -312,40 +315,45 @@ include 'session_starAdmin.php';
                     
                     
                     
-                          <!--Modal ediatr-->
+                        
                     
-                               <div class="modal fade" id="EditarP" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                  <!-- Modal editar-->
+                    <div class="modal fade" id="EditarC" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <h4 class="modal-title" id="myModalLabel2">Editar Paquete</h4>
+                                    <h4 class="modal-title" id="myModalLabel">Editar Reservacion</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="form-group" id="formEditar" name="formEditar" >
-                                        <input class="form-control" id="paquete" type="hidden" name="paquete"/>
-     
-                                    <label class="control-label ">Nombre de Paquete</label>
-                                    <input class="form-control" id="txtnombre" type="text" name="txtnombre"/>
-                                     
-                                     <label class="control-label">Tarifa $</label>
-                                    <input class="form-control" id="txttarifa" type="text" name="txttarifa"/>
                                     
-                                    <label class="control-label">Detalle</label>
-                                    <input class="form-control" id="txtdetalle" type="text" name="txtdetalle"/>
+                                    <form class="form-group" id="editarReservacion"  >
+
+                                    <label class="control-label">No. Reservacion</label>
+                                  
+                                    <input class="form-control" id="txtreservacion" name="txtreservacion" readonly
+                                           />
+                                     <label class="control-label">Fecha Entrada</label>
+                                    <input class="form-control" id="txtfechaentrada" name="txtfechaentrada" readonly/>
+                                     <label class="control-label">Fecha Salida</label>
+                                    <input class="form-control" id="txtfechasalida" name="txtfechasalida" readonly/>
+                                     <label class="control-label">Estado de Reservación</label>
                                     
-                                    
-                                       <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                     <button id="btnEditar" class="btn btn-success" type="button"  >Guardar cambios</button>                
-                                     </div>
-                                    
-                                    
+                                    <select name="estado" class="form-control"> 
+                                        <option value="1" selected>Proceso</option> 
+                                        <option value="2">Pagado</option> 
+                                     </select>
+
+
+                                   
                                      </form>
                                 </div>
-                            
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button  id="btneditar" type="button"  class="btn btn-primary">Guardar Cambios</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -632,6 +640,8 @@ include 'session_starAdmin.php';
             };
 
         </script>
+                <script src="../Resource/js/jquery-functions.js"></script>
+
         <!-- /gauge.js -->
     </body>
 </html>

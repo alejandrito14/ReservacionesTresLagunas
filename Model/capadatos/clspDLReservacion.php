@@ -127,8 +127,8 @@ class clspDLReservacion {
     
     public static function ObtenerTodasReservaciones($vmySql , $coleccion){
            
-          $consulta = $vmySql->consulta("SELECT * FROM p_reservacion");
-
+         // $consulta = $vmySql->consulta("SELECT * FROM p_reservacion");
+        $consulta=$vmySql->consulta("SELECT p_reservacion.id_reservacion,p_reservacion.cmpfechaEntrada,p_reservacion.cmpfechaSalida,p_reservacion.cmpnumeroDeActividades,p_reservacion.cmpcantidadPersonas,p_reservacion.cmpcomprobantePago,c_estadoreservacion.estado FROM `p_reservacion` INNER JOIN c_estadoreservacion ON p_reservacion.id_estadoReservacion=c_estadoreservacion.id_estadoReservacion");
         if ($vmySql->num_rows($consulta) > 0) {
             while ($resultados = $vmySql->fetch_array($consulta)) {
                 $reservacion = new clspFLReservacion();
@@ -137,7 +137,8 @@ class clspDLReservacion {
                 $reservacion->fechaSalida=$resultados['cmpfechaSalida'];
                 $reservacion->numeroDeActividades=$resultados['cmpnumeroDeActividades'];
                 $reservacion->cantidadPersonas=$resultados['cmpcantidadPersonas'];
-                $reservacion->idestadoReservacion=$resultados['id_estadoReservacion'];
+                $reservacion->comprobantePago=$resultados['cmpcomprobantePago'];
+                $reservacion->idestadoReservacion=$resultados['estado'];
                 $reservacion->idusuario=$resultados['id_usuario'];
                                 
                 $coleccion->reservaciones[] = $reservacion;
@@ -271,6 +272,49 @@ $consulta = $vmySql->consulta("SELECT * FROM p_reservacion WHERE id_reservacion 
         
         
         
+    }
+    
+    public static function ActualizarComprobante($vflreservacion,$vmySql){
+         try {
+           // $vsql = "UPDATE c_cabania SET cmpnombre=\"$vflcabania->nombre\",cmpdescripcion=\"$vflcabania->descripcion\",cmptarifa=\"$vflcabania->tarifa\"  WHERE id_cabania=\"$vflcabania->idcabania\" ";
+            $consulta = $vmySql->consulta("UPDATE p_reservacion SET cmpcomprobantePago=\"$vflreservacion->comprobantePago\"  WHERE id_reservacion=\"$vflreservacion->idreservacion\" ");
+
+            if ($consulta) {
+
+                if ($vmySql->ObtenerNumeroFilasAfectadas() != 1) {
+                    return 0;
+                }
+               
+            }
+
+            unset($consulta, $vmySql);
+            return 1; 
+        } catch (Exception $vexcepcion) {
+
+            throw new Exception($vexcepcion->getMessage(), $vexcepcion->getCode());
+        } 
+    }
+    
+    public static function ActualizarEstadoReservacion($vflreservacion,$vmySql){
+        
+        try {
+           // $vsql = "UPDATE c_cabania SET cmpnombre=\"$vflcabania->nombre\",cmpdescripcion=\"$vflcabania->descripcion\",cmptarifa=\"$vflcabania->tarifa\"  WHERE id_cabania=\"$vflcabania->idcabania\" ";
+            $consulta = $vmySql->consulta("UPDATE p_reservacion SET id_estadoReservacion=\"$vflreservacion->idestadoReservacion\"  WHERE id_reservacion=\"$vflreservacion->idreservacion\" ");
+
+            if ($consulta) {
+
+                if ($vmySql->ObtenerNumeroFilasAfectadas() != 1) {
+                    return 0;
+                }
+               
+            }
+
+            unset($consulta, $vmySql);
+            return 1; 
+        } catch (Exception $vexcepcion) {
+
+            throw new Exception($vexcepcion->getMessage(), $vexcepcion->getCode());
+        } 
     }
     
 }

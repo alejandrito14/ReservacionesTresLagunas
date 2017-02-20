@@ -8,6 +8,8 @@ include 'session_star.php';
         <title>Tres lagunas | Mis Reservaciones</title>
 
         <!-- CSS -->
+       <script src="../Resource/js/jquery.min.js"></script>
+
         <link rel="stylesheet" href="../Resource/css/style_1.css" type="text/css" media="screen" />
         <link rel="stylesheet" href="../Resource/css/social-icons.css" type="text/css" media="screen" />
         <!--[if IE 8]>
@@ -19,6 +21,8 @@ include 'session_star.php';
         <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>-->
 
         <!-- JS -->
+         <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+        crossorigin="anonymous"></script>
         <script type="text/javascript" src="../Resource/js/jquery-1.5.1.min.js"></script>
         <script type="text/javascript" src="../Resource/js/jquery-ui-1.8.13.custom.min.js"></script>
         <script type="text/javascript" src="../Resource/js/easing.js"></script>
@@ -93,6 +97,7 @@ include 'session_star.php';
 
         <link href="../Resource/css/bootstrap.min.css" rel="stylesheet">
         <script src="../Resource/js/bootstrap.min.js"></script>	
+
     </head>
 
     <body class="home">
